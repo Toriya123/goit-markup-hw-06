@@ -361,7 +361,7 @@
 .form-field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   /* Замість gap філдсету додаємо відступ для кожного поля */
 }
 
