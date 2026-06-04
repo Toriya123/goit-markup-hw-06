@@ -1,95 +1,344 @@
+/* ==========================================================================
+   ТОЧКА 1: БАЗОВІ СТИЛІ (МОБІЛКА ВІД 320px) — БЕЗ МЕДІА-ЗАПИТІВ
+   ========================================================================== */
+
 .header {
   border-bottom: 1px solid #E7E9FC;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16),
-    0px 2px 1px rgba(46, 47, 66, 0.08);
+              0px 1px 1px rgba(46, 47, 66, 0.16),
+              0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-
-/* .header-container {
-  display: flex;
-  align-items: center;
-} */
-
-.header .container {
-  display: flex;
-  align-items: center;
+.header-container {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  width: 100%;
 }
 
 .header-logo {
   font-family: 'Raleway', sans-serif;
   font-size: 18px;
-  line-height: 1.3;
+  line-height: 1.17;
   font-weight: 700;
   letter-spacing: 0.03em;
   color: #2E2F42;
   text-transform: uppercase;
-  margin-right: 76px;
+  padding: 16px 0;
 }
 
 .header-logo span {
   color: #4D5AE5;
 }
 
-
-
-.menu-list {
+/* Кнопка-бургер (іконка ☰) */
+.mobile-menu-open-btn {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 40px;
-}
-
-.menu-link {
-  display: block;
-  font-weight: 500;
-  color: #2E2F42;
-  padding: 24px 0;
-  position: relative;
-  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.menu-link:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-radius: 2px;
-  display: block;
-  width: 100%;
-  height: 4px;
+  justify-content: center;
+  padding: 0;
   background-color: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 0;
 }
 
-.menu-link:hover,
-.menu-link:focus,
-.menu-link.active {
-  color: #404BBF;
+.mobile-menu-open-icon {
+  fill: #2E2F42;
 }
 
-.menu-link.active::after {
-  background-color: rgba(64, 75, 191, 1);
-}
-
-
-
+.menu,
 .contacts {
-  margin-left: auto;
+  display: none;
 }
 
-.contacts-list {
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 999;  
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Клас, який додає JS для відкриття меню */
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Контейнер мобільного меню */
+.mobile-menu-container {
+  position: relative; 
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  
+  width: 100%;
+  height: 100%; 
+  box-sizing: border-box;
+  
+  padding: 72px 16px 40px 16px; 
+}
+
+/* Кнопка-хрестик (закриття) */
+.mobile-menu-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-close-btn:hover,
+.mobile-menu-close-btn:focus {
+  background-color: #404bbf;
+  border: none;
+}
+
+.mobile-menu-close-btn:hover .mobile-menu-close-icon,
+.mobile-menu-close-btn:focus .mobile-menu-close-icon {
+  fill: #ffffff;
+}
+
+.mobile-menu-close-icon {
+  display: block;
+  fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Великі лінки мобільного меню */
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
-.contacts-link {
-  color: #434455;
-  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.mobile-nav-link {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  color: #2e2f42;
+  text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.contacts-link:hover,
-.contacts-link:focus {
-  color: #404BBF;
+.mobile-nav-link.active,
+.mobile-nav-link:hover,
+.mobile-nav-link:focus {
+  color: #404bbf;
+}
+
+/* Блок контактів та соцмереж (липне до нижнього падінгу екрана) */
+.mobile-menu-bottom {
+  margin-top: auto; 
+}
+
+.mobile-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.mobile-contacts-link.accent {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #4d5ae5;
+  text-decoration: none;
+}
+
+.mobile-contacts-link {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #434455;
+  text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-contacts-link:hover,
+.mobile-contacts-link:focus {
+  color: #404bbf;
+}
+
+/* Мобільні соцмережі */
+.mobile-socials-list {
+  display: flex;
+  justify-content: space-between;
+  max-width: 280px;
+}
+
+.mobile-socials-item {
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-socials-link {
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-socials-link:hover,
+.mobile-socials-link:focus {
+  background-color: #31d2f4;
+}
+
+.mobile-socials-icon {
+  fill: #f4f4fd;
+}
+
+
+/* ==========================================================================
+   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ (ВІД 768px ДО 1157px)
+   Ховаємо мобілку, вмикаємо десктопні блоки, контакти стають стовпчиком праворуч
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+  
+  /* 🛑 Назавжди ховаємо мобільне меню та кнопку-бургер */
+  .mobile-menu,
+  .mobile-menu-open-btn {
+    display: none 
+  }
+
+  /* 🌟 Увімкнення десктопної навігації */
+  .menu,
+  .contacts {
+    display: block;
+  }
+
+  .header .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-logo {
+    line-height: 1.3;
+    margin-right: 120px; /* Збільшений відступ, щоб посунути лінки ближче до центру */
+    padding: 0; /* Скидаємо мобільний падінг */
+  }
+
+  /* Навігація по центру */
+  .menu-list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .menu-link {
+    display: block;
+    font-weight: 500;
+    color: #2E2F42;
+    padding: 24px 0;
+    position: relative;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .menu-link:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: transparent;
+  }
+
+  .menu-link:hover,
+  .menu-link:focus,
+  .menu-link.active {
+    color: #404BBF;
+  }
+
+  .menu-link.active::after,
+  .menu-link:hover::after {
+    opacity: 1;
+  }
+
+  .menu-link.active::after {
+    background-color: rgba(64, 75, 191, 1);
+  }
+
+  /* Блок контактів штовхаємо максимально праворуч */
+  .contacts {
+    margin-left: auto;
+  }
+
+  /* 🌟 ПЛАНШЕТНИЙ ФІКС КОНТАКТІВ (стовпчик праворуч) */
+  .contacts-list {
+    display: flex;
+    flex-direction: column; /* Будуємо стовпчиком */
+    gap: 12px; /* Проміжок між поштою і телефоном */
+    align-items: flex-end; /* Притискаємо краї лінків до правої сторони */
+  }
+
+  .contacts-link {
+    font-weight: 400;
+    font-size: 12px; /* Акуратний планшетний розмір за ТЗ */
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: #434455;
+    text-decoration: none;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .contacts-link:hover,
+  .contacts-link:focus {
+    color: #404BBF;
+  }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 3: ДЕСКТОПНА ВЕРСІЯ (ВІД 1158px І ВИЩЕ)
+   Остаточний шик: розгортаємо контакти в один красивий рядок праворуч
+   ========================================================================== */
+@media screen and (min-width: 1158px) {
+  
+  /* Відступ логотипу за десктопним макетом */
+  .header-logo {
+    margin-right: 76px;
+  }
+
+  /* 🌟 ДЕСКТОПНИЙ ФІКС КОНТАКТІВ (горизонтальний рядок) */
+  .contacts-list {
+    flex-direction: row; /* Розгортаємо в рядок */
+    align-items: center;
+    gap: 40px; /* Великий десктопний проміжок між посиланнями */
+  }
+
+  .contacts-link {
+    font-size: 16px; /* Повертаємо великий десктопний шрифт */
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
 }

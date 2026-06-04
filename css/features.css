@@ -1,4 +1,112 @@
+/* ==========================================================================
+   ТОЧКА 1: БАЗОВІ СТИЛІ FEATURES (МОБІЛКА ВІД 320px) — БЕЗ МЕДІА-ЗАПИТІВ
+   ========================================================================== */
+
+.features {
+  padding: 96px 0; /* Стандартні падінги для секцій у мобільній версії */
+}
+
+/* 🛑 ПО МОБАЙЛ ФЕРСТ: на телефонах іконки повністю ховаємо за ТЗ */
+.features-boximage {
+  display: none;
+}
+
 .features-list {
+  display: flex;
+  flex-direction: column; /* На мобілці все падає в один стовпчик */
+  gap: 72px; /* Великий відступ між картками переваг на мобілці */
+}
+
+.features-item {
+  width: 100%;
+}
+
+.features-title {
+  font-weight: 700;
+  font-size: 36px; /* Великий жирний заголовок на мобілці (як на фото 1) */
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  color: #2E2F42;
+  text-align: center; /* 🌟 Вирівнювання по центру на мобілці */
+  margin-bottom: 8px;
+}
+
+.features-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #434455;
+  text-align: left; /* Сам текст зазвичай залишається зліва або вирівнюється по центру, на фото 1 він вирівняний по лівому краю щодо центру контейнера, але для повної відповідності фото 1 ставимо зліва */
+}
+
+
+/* ==========================================================================
+   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ FEATURES (ВІД 768px ВГОРУ)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+  .features-list {
+    flex-direction: row;
+    flex-wrap: wrap; /* Дозволяємо перенос на другий рядок */
+    gap: 72px 24px; /* 🌟 Робимо сітку: 24px між колонками, 72px між рядками */
+  }
+
+  .features-item {
+    width: calc((100% - 24px) / 2); /* 🌟 Рівно дві колонки на планшеті (як на фото 2) */
+  }
+
+  .features-title {
+    font-weight: 700;
+    font-size: 36px;
+    text-align: left; /* 🌟 Перемикаємо вирівнювання ліворуч для планшета */
+  }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 3: ДЕСКТОПНА ВЕРСІЯ FEATURES (ВІД 1158px ВГОРУ)
+   ========================================================================== */
+@media screen and (min-width: 1158px) {
+  .features {
+    padding: 120px 0; /* Збільшуємо падінги секції на десктопі */
+  }
+
+  /* 🌟 УВІМКНЕННЯ ІКОНОК: тепер сірі плашки з контуром з'являються */
+  .features-boximage {
+    display: flex; /* Робимо видимими */
+    align-items: center;
+    justify-content: center;
+    height: 112px;
+    background-color: #F4F4FD;
+    border: 1px solid #8E8F99;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .features-list {
+    flex-wrap: nowrap; /* Скасовуємо перенос, вишиковуємо всі 4 картки в один рядок */
+    gap: 24px;
+  }
+
+  .features-item {
+    width: calc((100% - 72px) / 4); /* 🌟 Рівно чотири колонки на десктопі */
+  }
+
+  .features-title {
+    font-weight: 500; /* На десктопі заголовок стає менш жирним за макетом */
+    font-size: 20px; /* І меншим у розмірі */
+    line-height: 1.2;
+  }
+
+  .features-text {
+    font-weight: 400; /* Повертаємо десктопну товщину тексту */
+  }
+}
+
+
+
+
+/* .features-list {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,4 +136,4 @@
   letter-spacing: 0.02em;
   color: #2e2f42;
   margin-bottom: 8px;
-}
+} */

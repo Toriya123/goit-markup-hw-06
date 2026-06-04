@@ -1,25 +1,278 @@
 /* ==========================================================================
-   СТИЛІ ДЛЯ ФУТЕРА (FOOTER STYLES)
+   ТОЧКА 1: БАЗОВІ СТИЛІ FOOTER (МОБІЛКА ВІД 320px) — БЕЗ МЕДІА-ЗАПИТІВ
    ========================================================================== */
 
-/* Головний контейнер футера */
 .footer {
   background-color: #2E2F42;
-  padding: 100px 0;
+  padding: 96px 0; /* Мобільні падінги */
 }
 
-/* Флекс-контейнер для вирівнювання трьох блоків в один рядок */
+/* На мобілці робимо головний контейнер стовпчиком по центру */
 .footer-wrapper {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* 🌟 Увесь текст центрується (як на фото 1) */
+  gap: 72px; /* Великий вертикальний відступ між трьома блоками */
 }
 
 /* --- БЛОК 1: Логотип та текст --- */
 .footer-content {
   max-width: 264px;
   width: 100%;
+}
+
+.footer-logo {
+  display: inline-block;
+  color: #F4F4FD;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.17;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.footer-logo span {
+  color: #4D5AE5;
+}
+
+.footer-text {
+  color: #F4F4FD;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: left; /* Сам абзац тексту за ТЗ вирівнюється по лівому краю */
+  margin: 0;
+}
+
+/* --- БЛОК 2: Соціальні мережі --- */
+.footer-social-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.footer-social-list {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 🌟 Центруємо іконки на мобілці */
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-social-item {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-social-link {
+  width: 100%;
+  height: 100%;
+  background-color: #4D5AE5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus {
+  background-color: #31D0AA;
+}
+
+.footer-social-link .icon {
+  fill: #F4F4FD;
+}
+
+/* --- БЛОК 3: Форма підписки (Subscribe) --- */
+.footer-subscribe-wrapper {
+  width: 100%;
+  max-width: 396px; /* Обмеження ширини форми підписки для мобілки */
+}
+
+.footer-subscribe-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+/* 🌟 НА МОБІЛЦІ: будуємо інпут і кнопку в стовпчик по центру */
+.footer-subscribe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* Відступ між інпутом та кнопкою */
+}
+
+.footer-subscribe-label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-subscribe-input {
+  width: 100%;
+  max-width: 396px; /* Інпут стає широким на мобілці */
+  height: 40px;
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  padding-left: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  color: #FFFFFF;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-subscribe-input::placeholder {
+  color: #FFFFFF;
+}
+
+.footer-subscribe-input:focus {
+  border-color: #31D0AA;
+}
+
+.footer-subscribe-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  cursor: pointer;
+  background-color: #4D5AE5;
+  border: none;
+  border-radius: 4px;
+  min-width: 165px;
+  height: 40px;
+  padding: 8px 24px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-subscribe-btn:hover,
+.footer-subscribe-btn:focus {
+  background-color: #31D0AA;
+}
+
+.footer-subscribe-icon {
+  margin-left: 16px;
+  fill: #FFFFFF;
+}
+
+
+/* ==========================================================================
+   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ FOOTER (ВІД 768px ДО 1157px)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+  
+  /* Боковий падінг контейнера, щоб вміст став по центру екрана */
+  .footer {
+    padding-left: 108px;
+  }
+
+  .footer-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap; /* 🌟 Дозволяємо підписці впасти на другий рядок */
+    align-items: baseline;
+    text-align: left; /* Скидаємо вирівнювання ліворуч */
+    gap: 72px 24px; /* 72px між рядками, 24px між блоком 1 та блоком 2 */
+  }
+
+  .footer-content {
+    margin-right: 24px; /* Робимо компактний відступ до іконок */
+  }
+
+  .footer-social {
+    margin-right: 0;
+  }
+
+  .footer-social-list {
+    justify-content: flex-start; /* Іконки липнуть ліворуч */
+  }
+
+  .footer-subscribe-wrapper {
+    max-width: 453px; /* Ширина під блок форми за ТЗ планшета */
+  }
+
+  /* 🌟 ПЛАНШЕТНИЙ ФІКС ФОРМИ: розгортаємо інпут та кнопку в один рядок (фото 2) */
+  .footer-subscribe-form {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .footer-subscribe-input {
+    width: 264px; /* Повертаємо оригінальний розмір інпута */
+  }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 3: ДЕСKТОПНА ВЕРСІЯ FOOTER (ВІД 1158px І ВИЩЕ)
+   ========================================================================== */
+@media screen and (min-width: 1158px) {
+  .footer {
+    padding: 100px 0;
+    padding-left: 0; /* Скидаємо планшетний відступ */
+  }
+
+  .footer-wrapper {
+    flex-wrap: nowrap; /* Забороняємо переноси, все стає в одну лінію */
+    gap: 0; /* Скидаємо загальний gap, керуємо через марджини */
+  }
+
+  .footer-content {
+    margin-right: 120px; /* Великий десктопний відступ */
+  }
+
+  .footer-social {
+    margin-right: 80px; /* Відступ між іконками та підпискою */
+  }
+
+  .footer-subscribe-wrapper {
+    margin-left: auto; /* Виштовхуємо форму підписки в самий правий край */
+  }
+}
+
+
+
+/* 
+.footer {
+  background-color: #2E2F42;
+  padding: 100px 0;
+}
+
+
+.footer-wrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+
+.footer-content {
+  max-width: 264px;
+  width: 100%;
   margin-right: 120px;
-  /* Відступ до блоку соцмереж */
+
 }
 
 .footer-logo {
@@ -47,10 +300,9 @@
   margin: 0;
 }
 
-/* --- БЛОК 2: Соціальні мережі --- */
 .footer-social {
   margin-right: 80px;
-  /* Відступ до форми підписки */
+
 }
 
 .footer-social-text {
@@ -68,7 +320,6 @@
   align-items: center;
   gap: 16px;
   list-style: none;
-  /* Прибирає маркерні точки списку */
   padding: 0;
   margin: 0;
 }
@@ -89,21 +340,19 @@
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Ховер та фокус для іконок соцмереж (колір змінюється на зелений) */
 .footer-social-link:hover,
 .footer-social-link:focus {
   background-color: #31D0AA;
 }
 
-/* Фарбуємо SVG-іконки всередині кіл у світлий колір */
+
 .footer-social-link .icon {
   fill: #F4F4FD;
 }
 
-/* --- БЛОК 3: Форма підписки (Subscribe) --- */
+
 .footer-subscribe-wrapper {
   margin-left: auto;
-  /* Примусово штовхає цей блок у правий край */
 }
 
 .footer-subscribe-title {
@@ -116,7 +365,6 @@
   margin-top: 0;
 }
 
-/* Робимо інпут та кнопку флекс-елементами, щоб вони встали поруч */
 .footer-subscribe-form {
   display: flex;
   gap: 24px;
@@ -126,7 +374,6 @@
   display: flex;
 }
 
-/* Стилізація поля введення тексту (Email) */
 .footer-subscribe-input {
   width: 264px;
   height: 40px;
@@ -147,12 +394,12 @@
   color: #FFFFFF;
 }
 
-/* Колір рамки інпута при кліку (активний стан) */
+
 .footer-subscribe-input:focus {
   border-color: #31D0AA;
 }
 
-/* Стилізація кнопки відправки форми */
+
 .footer-subscribe-btn {
   display: inline-flex;
   justify-content: center;
@@ -173,14 +420,13 @@
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Ховер та фокус для кнопки */
+
 .footer-subscribe-btn:hover,
 .footer-subscribe-btn:focus {
   background-color: #31D0AA;
 }
 
-/* Іконка паперового літачка всередині кнопки */
 .footer-subscribe-icon {
   margin-left: 16px;
   fill: #FFFFFF;
-}
+} */

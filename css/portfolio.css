@@ -1,4 +1,142 @@
+/* ==========================================================================
+   ТОЧКА 1: БАЗОВІ СТИЛІ PORTFOLIO (МОБІЛКА ВІД 320px) — БЕЗ МЕДІА-ЗАПИТІВ
+   ========================================================================== */
+
+.portfolio {
+  padding: 96px 0; /* Мобільні падінги для секції */
+}
+
+.portfolio .title {
+  font-size: 36px;
+  line-height: 1.11;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: #2E2F42;
+  margin-bottom: 72px; /* Великий відступ від заголовка до першої картки */
+}
+
 .portfolio-list {
+  display: flex;
+  flex-direction: column; /* На мобілці — все в один стовпчик (фото 1) */
+  align-items: center; /* Центруємо картки на екрані телефону */
+  gap: 48px; /* Вертикальний відступ між картками */
+}
+
+.portfolio-item {
+  background-color: #ffffff;
+  max-width: 360px; /* 🌟 Фіксуємо ширину картки під розмір картинок 360х300 */
+  width: 100%;
+  cursor: pointer;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover {
+  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+              0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+              0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+.portfolio-box {
+  position: relative;
+  overflow: hidden; /* Щоб заховати оверлей, коли він внизу */
+}
+
+.portfolio-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 🌟 АНІМАЦІЙНИЙ СИНІЙ ОВЕРЛЕЙ (Працює всюди, навіть на мобілці) */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4D5AE5;
+  color: #F4F4FD;
+  padding: 40px 32px;
+  transform: translateY(100%); /* Повністю ховаємо внизу коробки */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Текст всередині оверлею */
+.portfolio-overlay-text {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* Ефект появи при наведенні */
+.portfolio-item:hover .portfolio-overlay {
+  transform: translateY(0); /* Повертаємо оверлей на місце */
+}
+
+/* Опис картки (назва + категорія) */
+.portfolio-description {
+  padding: 32px 16px;
+  border: 1px solid #E7E9FC;
+  border-width: 0px 1px 1px 1px; /* Тільки боки та низ */
+}
+
+.portfolio-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #2E2F42;
+  margin-bottom: 8px;
+}
+
+.portfolio-text {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #434455;
+}
+
+
+/* ==========================================================================
+   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ PORTFOLIO (ВІД 768px ВГОРУ)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+  .portfolio-list {
+    flex-direction: row;
+    flex-wrap: wrap; /* Дозволяємо перенесення карток на наступні рядки */
+    justify-content: center; /* Центруємо сітку на планшеті */
+    gap: 48px 24px; /* 🌟 24px між колонками, 48px між рядами (як на фото 2) */
+  }
+
+  /* На планшеті картки стають у сітку по дві штуки в ряд */
+  .portfolio-item {
+    max-width: calc((100% - 24px) / 2); /* Рівно дві колонки */
+  }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 3: ДЕСKТОПНА ВЕРСІЯ PORTFOLIO (ВІД 1158px ВГОРУ)
+   ========================================================================== */
+@media screen and (min-width: 1158px) {
+  .portfolio {
+    padding: 120px 0; /* Великі десктопні падінги */
+  }
+
+  .portfolio-list {
+    gap: 48px 24px; /* Залишаємо ті самі проміжки, але міняємо пропорцію під 3 колонки */
+  }
+
+  /* Твій оригінальний десктопний розрахунок під три колонки */
+  .portfolio-item {
+    max-width: calc((100% - 48px) / 3); /* Рівно три колонки на десктопі */
+  }
+}
+
+
+
+/* .portfolio-list {
   display: flex;
   flex-wrap: wrap;
   gap: 48px 24px;
@@ -57,4 +195,4 @@
 
 .portfolio-item:hover .portfolio-overlay {
   transform: translateY(0);
-}
+} */

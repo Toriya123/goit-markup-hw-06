@@ -1,266 +1,7 @@
-/* 
-.backdrop,
-.modal-overlay,
-#modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-  background-color: rgba(46, 47, 66, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+/* ==========================================================================
+   ТОЧКА 1: БАЗОВІ СТИЛІ МОДАЛКИ (МОБІЛКА ВІД 320px) — БЕЗ МЕДІА-ЗАПИТІВ
+   ========================================================================== */
 
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-.backdrop.is-open,
-.modal-overlay.is-open,
-#modal.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.modal-overlay.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.modal {
-  background-color: #fcfcfc;
-  padding: 72px 24px 24px;
-  position: relative;
-  width: 100%;
-  max-width: 408px;
-  max-height: 80%;
-  overflow-y: auto;
-  border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 1px 3px rgba(0, 0, 0, 0.12),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.form-close {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #E7E9FC;
-  box-shadow: inset 0 0 0 1px rgba(46, 47, 66, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 24px;
-  top: 24px;
-  padding: 0;
-  cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.icon-form-close {
-  fill: #2E2F42;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-close:hover,
-.form-close:focus {
-  background-color: #404bbf;
-  border: none;
-}
-
-.form-close:hover .icon-form-close,
-.form-close:focus .icon-form-close {
-  fill: #ffffff;
-}
-
-.modal-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group {
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-title {
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #2E2F42;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 16px;
-  width: 100%;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-label {
-  color: #8E8F99;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
-
-.input-wrapper {
-  position: relative;
-  display: block;
-  width: 100%
-}
-
-.form-input {
-  width: 100%;
-  height: 40px;
-  background-color: transparent;
-  border: 1px solid rgba(46, 47, 66, 0.4);
-  border-radius: 4px;
-  padding: 11px 16px 11px 38px;
-  font-size: 16px;
-  color: #2e2f42;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  outline: transparent;
-}
-
-.form-input:focus {
-  border-color: #4d5ae5;
-}
-
-.input-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 16px;
-  fill: #2e2f42;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-input:focus+.input-icon {
-  fill: #4d5ae5;
-}
-
-
-.form-textarea {
-  width: 100%;
-  height: 120px;
-  border: 1px solid rgba(46, 47, 66, 0.4);
-  border-radius: 4px;
-  background-color: transparent;
-  padding: 8px 16px;
-  outline: transparent;
-  resize: none;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.04em;
-  color: #2e2f42;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-textarea:focus {
-  border-color: #4d5ae5;
-}
-
-.form-textarea::placeholder {
-  color: rgba(46, 47, 66, 0.4);
-}
-
-.checkbox-input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  cursor: pointer;
-}
-
-.checkbox-custom-box {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  width: 16px;
-  height: 16px;
-  border: 1px solid rgba(46, 47, 66, 0.4);
-  border-radius: 2px;
-  fill: transparent;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.checkbox-input:checked+.checkbox-container .checkbox-custom-box {
-  background-color: #404bbf;
-  border-color: #404bbf;
-  fill: #f4f4fd;
-}
-
-.checkbox-text {
-  color: #8e8f99;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.04em;
-}
-
-.checkbox-link {
-  color: #4d5ae5;
-  text-decoration: underline;
-}
-
-
-.form-submit-btn {
-  display: block;
-  min-width: 169px;
-  height: 56px;
-  margin: 0 auto;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #ffffff;
-  background-color: #4d5ae5;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-submit-btn:hover,
-.form-submit-btn:focus {
-  background-color: #404bbf;
-} */
-
-/* Базовий стан бекдропу (приховано) */
 .backdrop,
 .modal-overlay,
 #modal {
@@ -278,10 +19,9 @@
   visibility: hidden;
   pointer-events: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Стан, коли додано клас .is-open (показуємо) */
 .backdrop.is-open,
 .modal-overlay.is-open,
 #modal.is-open {
@@ -290,18 +30,20 @@
   pointer-events: auto;
 }
 
+/* 🌟 АДАПТИВНИЙ КОНТЕЙНЕР ДЛЯ МОБІЛКИ */
 .modal {
   background-color: #fcfcfc;
-  padding: 72px 24px 24px;
+  padding: 72px 16px 24px 16px; /* Компактні бокові падінги 16px для мобілки */
   position: relative;
-  width: 100%;
-  max-width: 408px;
-  max-height: 80%;
+  width: calc(100% - 32px); /* Робить красиві відступи по 16px від країв екрана */
+  max-width: 288px; /* 🌟 Сувора мобільна ширина за макетом WebStudio */
+  max-height: 90%; /* Збільшили ліміт висоти для мобілок, щоб усе вмістилося */
   overflow-y: auto;
   border-radius: 4px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 1px 3px rgba(0, 0, 0, 0.12),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+              0px 1px 3px rgba(0, 0, 0, 0.12),
+              0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Кнопка-хрестик для закриття */
@@ -320,7 +62,7 @@
   padding: 0;
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+              border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-form-close {
@@ -351,13 +93,11 @@
   width: 100%;
 }
 
-/* Елементи форми */
 .modal-form {
   display: flex;
   flex-direction: column;
 }
 
-/* Контейнер для поля (label + input) */
 .form-field {
   display: flex;
   flex-direction: column;
@@ -368,7 +108,6 @@
   margin-bottom: 16px;
 }
 
-/* Підписи до полів */
 .form-label {
   color: #8E8F99;
   font-size: 12px;
@@ -377,12 +116,10 @@
   margin-bottom: 4px;
 }
 
-/* Обгортка інпута */
 .input-wrapper {
   position: relative;
   display: block;
   width: 100%;
-  /* Виправлено: додали крапку з комою */
 }
 
 .form-input {
@@ -411,7 +148,7 @@
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-input:focus+.input-icon {
+.form-input:focus + .input-icon {
   fill: #4d5ae5;
 }
 
@@ -471,12 +208,13 @@
   height: 16px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   fill: transparent;
+  flex-shrink: 0; /* Захист кастомного квадратика від стискання при переносі тексту */
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+              border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.checkbox-input:checked+.checkbox-container .checkbox-custom-box {
+.checkbox-input:checked + .checkbox-container .checkbox-custom-box {
   background-color: #404bbf;
   border-color: #404bbf;
   fill: #f4f4fd;
@@ -516,3 +254,283 @@
 .form-submit-btn:focus {
   background-color: #404bbf;
 }
+
+
+/* ==========================================================================
+   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ (ВІД 768px І ВИЩЕ)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+  .modal {
+    /* 🌟 ТУТ КАРТКА РОЗШИРЮЄТЬСЯ ДО ОРИГІНАЛЬНОГО РОЗМІРУ */
+    max-width: 408px;
+    padding: 72px 24px 24px 24px; /* Повертаємо десктопні падінги 24px */
+    max-height: 80%; /* Повертаємо твої 80% висоти */
+  }
+}
+
+
+/* ==========================================================================
+   ТОЧКА 3: ДЕСКТОПНА ВЕРСІЯ (ВІД 1158px І ВИЩЕ)
+   ========================================================================== */
+@media screen and (min-width: 1158px) {
+  /* На десктопі параметри модалки повністю збігаються з планшетними, 
+     тому цей блок залишається відкритим для специфічних десктопних ховерів або 
+     відступів, якщо вони знадобляться */
+}
+
+
+
+/* 
+.backdrop,
+.modal-overlay,
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(46, 47, 66, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.backdrop.is-open,
+.modal-overlay.is-open,
+#modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal {
+  background-color: #fcfcfc;
+  padding: 72px 24px 24px;
+  position: relative;
+  width: 100%;
+  max-width: 408px;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.form-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #E7E9FC;
+  box-shadow: inset 0 0 0 1px rgba(46, 47, 66, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-form-close {
+  fill: #2E2F42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-close:hover,
+.form-close:focus {
+  background-color: #404bbf;
+  border: none;
+}
+
+.form-close:hover .icon-form-close,
+.form-close:focus .icon-form-close {
+  fill: #ffffff;
+}
+
+
+.form-title {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #2E2F42;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.form-field:last-of-type {
+  margin-bottom: 16px;
+}
+
+
+.form-label {
+  color: #8E8F99;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+
+.input-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+
+}
+
+.form-input {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  padding: 11px 16px 11px 38px;
+  font-size: 16px;
+  color: #2e2f42;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: transparent;
+}
+
+.form-input:focus {
+  border-color: #4d5ae5;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 16px;
+  fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-input:focus+.input-icon {
+  fill: #4d5ae5;
+}
+
+.form-textarea {
+  width: 100%;
+  height: 120px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  background-color: transparent;
+  padding: 8px 16px;
+  outline: transparent;
+  resize: none;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-textarea:focus {
+  border-color: #4d5ae5;
+}
+
+.form-textarea::placeholder {
+  color: rgba(46, 47, 66, 0.4);
+}
+
+.checkbox-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.checkbox-custom-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  fill: transparent;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox-input:checked+.checkbox-container .checkbox-custom-box {
+  background-color: #404bbf;
+  border-color: #404bbf;
+  fill: #f4f4fd;
+}
+
+.checkbox-text {
+  color: #8e8f99;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+}
+
+.checkbox-link {
+  color: #4d5ae5;
+  text-decoration: underline;
+}
+
+
+.form-submit-btn {
+  display: block;
+  min-width: 169px;
+  height: 56px;
+  margin: 0 auto;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background-color: #4d5ae5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-submit-btn:hover,
+.form-submit-btn:focus {
+  background-color: #404bbf;
+} */
