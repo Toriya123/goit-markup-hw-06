@@ -12,8 +12,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center; /* 🌟 Увесь текст центрується (як на фото 1) */
-  gap: 72px; /* Великий вертикальний відступ між трьома блоками */
+  text-align: center; 
+  gap: 72px; /* Вертикальний відступ між трьома блоками на мобілці */
 }
 
 /* --- БЛОК 1: Логотип та текст --- */
@@ -44,7 +44,7 @@
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  text-align: left; /* Сам абзац тексту за ТЗ вирівнюється по лівому краю */
+  text-align: left; /* Абзац тексту вирівнюється по лівому краю */
   margin: 0;
 }
 
@@ -62,7 +62,7 @@
 .footer-social-list {
   display: flex;
   align-items: center;
-  justify-content: center; /* 🌟 Центруємо іконки на мобілці */
+  justify-content: center; /* Центруємо іконки на мобілці */
   gap: 16px;
   list-style: none;
   padding: 0;
@@ -96,8 +96,7 @@
 
 /* --- БЛОК 3: Форма підписки (Subscribe) --- */
 .footer-subscribe-wrapper {
-  width: 100%;
-  max-width: 396px; /* Обмеження ширини форми підписки для мобілки */
+  width: 100%; /* 🌟 ВИПРАВЛЕНО: Прибрали max-width, щоб блок займав усю ширину на мобільних */
 }
 
 .footer-subscribe-title {
@@ -110,23 +109,20 @@
   margin-top: 0;
 }
 
-/* 🌟 НА МОБІЛЦІ: будуємо інпут і кнопку в стовпчик по центру */
+/* НА МОБІЛЦІ: будуємо інпут і кнопку в стовпчик */
 .footer-subscribe-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px; /* Відступ між інпутом та кнопкою */
+  gap: 16px;
 }
 
 .footer-subscribe-label {
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .footer-subscribe-input {
-  width: 100%;
-  max-width: 396px; /* Інпут стає широким на мобілці */
+  width: 100%; /* 🌟 ВИПРАВЛЕНО: Інпут тепер плавно гумово розтягується на мобілці */
   height: 40px;
   border: 1px solid #FFFFFF;
   background-color: transparent;
@@ -184,22 +180,20 @@
    ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ FOOTER (ВІД 768px ДО 1157px)
    ========================================================================== */
 @media screen and (min-width: 768px) {
-  
-  /* Боковий падінг контейнера, щоб вміст став по центру екрана */
   .footer {
-    padding-left: 108px;
+    padding-left: 0; /* 🌟 ВИПРАВЛЕНО: Зайвий padding-left видалено, контейнер працює сам */
   }
 
   .footer-wrapper {
     flex-direction: row;
-    flex-wrap: wrap; /* 🌟 Дозволяємо підписці впасти на другий рядок */
+    flex-wrap: wrap; 
     align-items: baseline;
-    text-align: left; /* Скидаємо вирівнювання ліворуч */
-    gap: 72px 24px; /* 72px між рядками, 24px між блоком 1 та блоком 2 */
+    text-align: left; 
+    gap: 72px 24px; /* Робочий gap за ТЗ: 72px вертикальний, 24px горизонтальний */
   }
 
   .footer-content {
-    margin-right: 24px; /* Робимо компактний відступ до іконок */
+    margin-right: 0; /* 🌟 ВИПРАВЛЕНО: Прибрали марджин, тепер працює чистий gap: 24px */
   }
 
   .footer-social {
@@ -207,226 +201,46 @@
   }
 
   .footer-social-list {
-    justify-content: flex-start; /* Іконки липнуть ліворуч */
+    justify-content: flex-start; 
   }
 
   .footer-subscribe-wrapper {
-    max-width: 453px; /* Ширина під блок форми за ТЗ планшета */
+    max-width: 453px; 
   }
 
-  /* 🌟 ПЛАНШЕТНИЙ ФІКС ФОРМИ: розгортаємо інпут та кнопку в один рядок (фото 2) */
   .footer-subscribe-form {
     flex-direction: row;
     gap: 24px;
   }
 
   .footer-subscribe-input {
-    width: 264px; /* Повертаємо оригінальний розмір інпута */
+    width: 264px; /* Фіксована ширина інпута на планшеті та десктопі */
   }
 }
 
 
 /* ==========================================================================
-   ТОЧКА 3: ДЕСKТОПНА ВЕРСІЯ FOOTER (ВІД 1158px І ВИЩЕ)
+   ТОЧКА 3: ДЕСКТОПНА ВЕРСІЯ FOOTER (ВІД 1158px І ВИЩЕ)
    ========================================================================== */
 @media screen and (min-width: 1158px) {
   .footer {
     padding: 100px 0;
-    padding-left: 0; /* Скидаємо планшетний відступ */
   }
 
   .footer-wrapper {
-    flex-wrap: nowrap; /* Забороняємо переноси, все стає в одну лінію */
-    gap: 0; /* Скидаємо загальний gap, керуємо через марджини */
+    flex-wrap: nowrap; /* Все в одну лінію */
+    gap: 0; /* 🌟 ВИПРАВЛЕНО: Повністю обнуляємо gap для десктопа, керуємо марджинами */
   }
 
   .footer-content {
-    margin-right: 120px; /* Великий десктопний відступ */
+    margin-right: 120px; /* Відступ між 1-м і 2-м блоком чітко 120px */
   }
 
   .footer-social {
-    margin-right: 80px; /* Відступ між іконками та підпискою */
+    margin-right: 80px; /* 🌟 ВИПРАВЛЕНО: Чистий марджин 80px без впливу сторонніх gap */
   }
 
   .footer-subscribe-wrapper {
-    margin-left: auto; /* Виштовхуємо форму підписки в самий правий край */
+    margin-left: auto; /* Форма підписки притискається до правого краю */
   }
 }
-
-
-
-/* 
-.footer {
-  background-color: #2E2F42;
-  padding: 100px 0;
-}
-
-
-.footer-wrapper {
-  display: flex;
-  align-items: baseline;
-}
-
-
-.footer-content {
-  max-width: 264px;
-  width: 100%;
-  margin-right: 120px;
-
-}
-
-.footer-logo {
-  display: inline-block;
-  color: #F4F4FD;
-  font-family: "Raleway", sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.17;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  text-decoration: none;
-  margin-bottom: 16px;
-}
-
-.footer-logo span {
-  color: #4D5AE5;
-}
-
-.footer-text {
-  color: #F4F4FD;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  margin: 0;
-}
-
-.footer-social {
-  margin-right: 80px;
-
-}
-
-.footer-social-text {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
-  margin-bottom: 16px;
-  margin-top: 0;
-}
-
-.footer-social-list {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-social-item {
-  width: 40px;
-  height: 40px;
-}
-
-.footer-social-link {
-  width: 100%;
-  height: 100%;
-  background-color: #4D5AE5;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.footer-social-link:hover,
-.footer-social-link:focus {
-  background-color: #31D0AA;
-}
-
-
-.footer-social-link .icon {
-  fill: #F4F4FD;
-}
-
-
-.footer-subscribe-wrapper {
-  margin-left: auto;
-}
-
-.footer-subscribe-title {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
-  margin-bottom: 16px;
-  margin-top: 0;
-}
-
-.footer-subscribe-form {
-  display: flex;
-  gap: 24px;
-}
-
-.footer-subscribe-label {
-  display: flex;
-}
-
-.footer-subscribe-input {
-  width: 264px;
-  height: 40px;
-  border: 1px solid #FFFFFF;
-  background-color: transparent;
-  font-size: 12px;
-  line-height: 2;
-  letter-spacing: 0.04em;
-  padding-left: 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  color: #FFFFFF;
-  outline: transparent;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.footer-subscribe-input::placeholder {
-  color: #FFFFFF;
-}
-
-
-.footer-subscribe-input:focus {
-  border-color: #31D0AA;
-}
-
-
-.footer-subscribe-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
-  cursor: pointer;
-  background-color: #4D5AE5;
-  border: none;
-  border-radius: 4px;
-  min-width: 165px;
-  height: 40px;
-  padding: 8px 24px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-.footer-subscribe-btn:hover,
-.footer-subscribe-btn:focus {
-  background-color: #31D0AA;
-}
-
-.footer-subscribe-icon {
-  margin-left: 16px;
-  fill: #FFFFFF;
-} */

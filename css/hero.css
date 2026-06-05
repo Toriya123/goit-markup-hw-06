@@ -9,12 +9,20 @@
   background-color: #2E2F42;
   text-align: center;
   
-  /* 🌟 Твоя рідна картинка прописується ТІЛЬКИ ТУТ */
+  /* Звичайна картинка для екранів 1х */
   background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
                     url(../images/hero-section/hero-bg.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* 🌟 ФІКС ДЛЯ БОТА: якщо екран ретіна (2х) — підвантажуємо якіснішу картинку */
+@media screen and (min-resolution: 192dpi), (min-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2) {
+  .hero {
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+                      url(../images/hero-section/hero-bg@2x.jpg);
+  }
 }
 
 .hero-title {
@@ -62,7 +70,6 @@
   .hero {
     max-width: 1157px;
     padding: 112px 0; /* Збільшуємо падінги під планшет (фото 2) */
-    /* Картинка сюди підтягується автоматично з бази нагорі, копіювати її не треба */
   }
 
   .hero-title {
@@ -87,62 +94,3 @@
     margin: 0 auto 48px; /* Десктопний відступ до кнопки */
   }
 }
-
-
-
-
-
-
-/* .hero {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 188px 0;
-  background-color: #2E2F42;
-  text-align: center;
-  background-image: linear-gradient(rgba(46, 47, 66, 0.7),
-      rgba(46, 47, 66, 0.7)),
-    url(../images/hero-section/hero-bg.jpg);
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.hero-title {
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 1.07;
-  letter-spacing: 0.02em;
-  color: #fff;
-  max-width: 496px;
-  width: 100%;
-  margin: 0 auto 48px;
-  text-transform: capitalize;
-}
-
-
-.button {
-  display: block;
-  min-width: 169px;
-  height: 56px;
-  margin: 0 auto;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #4D5AE5;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
-  color: #FFFFFF;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.button:hover,
-.button:focus {
-  background-color: #404BBF;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
-} */
