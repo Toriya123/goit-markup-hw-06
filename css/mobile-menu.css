@@ -1,183 +1,108 @@
-/* Кнопка-бургер (іконка ☰) */
-.mobile-menu-open-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
+  color: #434455;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+ul, ol {
+  list-style-type: none;
   padding: 0;
+  margin: 0;
+}
+
+button {
+  border: none;
   background-color: transparent;
-  border: none;
   cursor: pointer;
-  line-height: 0;
 }
 
-.mobile-menu-open-icon {
-  fill: #2E2F42;
+a {
+  text-decoration: none;
+  font-style: normal;
 }
 
-.menu,
-.contacts {
-  display: none;
+/* ==========================================================================
+   🌟 АДАПТИВНІ СТИЛІ СЕКЦІЙ ТА КОНТЕЙНЕРА (ВИМОГА МЕНТОРА)
+   ========================================================================== */
+
+/* 1. Базова мобільна ширина (від 320px до 767px) */
+.section {
+  padding: 96px 0; /* Менші вертикальні падінги для мобілки */
 }
 
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
+.container {
+  max-width: 320px; /* Обмеження ширини на телефонах */
   width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  z-index: 999;  
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), 
-              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto;
+  padding-left: 16px;  /* 🌟 Внутрішні однакові відступи ліворуч/праворуч */
+  padding-right: 16px; /* відповідно до макету мобільної версії */
+  position: relative;
+  z-index: 1;
 }
 
-/* Клас, який додає JS для відкриття меню */
-.mobile-menu.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+/* 2. Планшетна ширина (від 768px до 1157px) */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px; /* Контейнер розширюється під планшет */
+  }
 }
 
-/* Контейнер мобільного меню */
-.mobile-menu-container {
-  position: relative; 
-  display: flex;
-  flex-direction: column;
-  
-  width: 100%;
-  height: 100%; 
-  box-sizing: border-box;
-  
-  padding: 72px 16px 40px 16px; 
+/* 3. Десктопна ширина (від 1158px і вище) */
+@media screen and (min-width: 1158px) {
+  .section {
+    padding: 120px 0; /* Повертаємо великі десктопні падінги секцій */
+  }
+
+  .container {
+    max-width: 1158px; /* Фінальна десктопна ширина контейнера */
+    padding-left: 15px;  /* Зміна падінгів під десктопний макет */
+    padding-right: 15px;
+  }
 }
 
-/* Кнопка-хрестик (закриття) */
-.mobile-menu-close-btn {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e7e9fc;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0;
-  cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
-              border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.mobile-menu-close-btn:hover,
-.mobile-menu-close-btn:focus {
-  background-color: #404bbf;
-  border: none;
-}
-
-.mobile-menu-close-btn:hover .mobile-menu-close-icon,
-.mobile-menu-close-btn:focus .mobile-menu-close-icon {
-  fill: #ffffff;
-}
-
-.mobile-menu-close-icon {
-  display: block;
-  fill: #2e2f42;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Великі лінки мобільного меню */
-.mobile-nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.mobile-nav-link {
+.title {
   font-weight: 700;
   font-size: 36px;
   line-height: 1.11;
   letter-spacing: 0.02em;
+  text-align: center;
   color: #2e2f42;
-  text-decoration: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 72px;
 }
 
-.mobile-nav-link.active,
-.mobile-nav-link:hover,
-.mobile-nav-link:focus {
-  color: #404bbf;
+.sr-only {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  margin: -1px;
 }
 
-/* Блок контактів та соцмереж (липне до нижнього падінгу екрана) */
-.mobile-menu-bottom {
-  margin-top: auto; 
+.icon {
+  fill: #F4F4FD;
 }
 
-.mobile-contacts-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-bottom: 48px;
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
-.mobile-contacts-link.accent {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  color: #4d5ae5;
-  text-decoration: none;
-}
-
-.mobile-contacts-link {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  color: #434455;
-  text-decoration: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mobile-contacts-link:hover,
-.mobile-contacts-link:focus {
-  color: #404bbf;
-}
-
-/* Мобільні соцмережі */
-.mobile-socials-list {
-  display: flex;
-  justify-content: space-between;
-  max-width: 280px;
-}
-
-.mobile-socials-item {
-  width: 40px;
-  height: 40px;
-}
-
-.mobile-socials-link {
-  width: 100%;
-  height: 100%;
-  background-color: #4d5ae5;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mobile-socials-link:hover,
-.mobile-socials-link:focus {
-  background-color: #31d2f4;
-}
-
-.mobile-socials-icon {
-  fill: #f4f4fd;
+label {
+  margin: 0;
+  padding: 0;
 }
