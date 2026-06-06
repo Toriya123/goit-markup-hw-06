@@ -6,17 +6,13 @@
   height: 100%;
   background-color: #ffffff;
   z-index: 999;
-  
-  /* За замовчуванням меню має бути приховане */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), 
               visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Коли додається клас is-open (через JS), меню красиво з'являється */
 .mobile-menu.is-open {
   opacity: 1;
   visibility: visible;
@@ -28,7 +24,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 80px 24px 40px 40px;
+  padding: 72px 24px 40px 16px;
 }
 
 .mobile-menu-close-btn {
@@ -65,7 +61,7 @@
 }
 
 .mobile-menu-nav {
-  margin-bottom: auto; /* Виштовхує контакти та соцмережі в самий низ */
+  margin-bottom: auto;
 }
 
 .mobile-nav-list {
@@ -96,27 +92,24 @@
   margin-bottom: 48px;
 }
 
-/* Стиль для телефону (перший у списку за ТЗ Завдання 3) */
-.mobile-contacts-item:first-child .mobile-contacts-link {
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 1.11;
-  letter-spacing: 0.02em;
-  color: #4d5ae5;
-}
-
-/* Стиль для пошти (другий у списку) */
-.mobile-contacts-item:last-child .mobile-contacts-link {
+.mobile-contacts-link {
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
   color: #434455;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-contacts-link.accent,
+.mobile-contacts-link:hover,
+.mobile-contacts-link:focus {
+  color: #4d5ae5;
 }
 
 .mobile-socials-list {
   display: flex;
-  justify-content: space-between; /* Рівномірно розподіляємо за шириною за ТЗ Завдання 3 */
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -143,4 +136,10 @@
 
 .mobile-socials-icon {
   fill: #f4f4fd;
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
 }

@@ -47,8 +47,7 @@ a {
 }
 
 .container {
-  min-width: 320px;
-  max-width: 428px; 
+  max-width: 320px;
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
@@ -80,8 +79,8 @@ fieldset {
 }
 
 label {
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -93,6 +92,6 @@ padding: 0;
 @media screen and (min-width: 1158px) {
   .container {
     max-width: 1158px;
-    padding: 0 15px; /* Повертаємо 15px для десктопа, як вимагає макет */
+    padding: 0 15px;
   }
 }
