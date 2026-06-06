@@ -1,15 +1,14 @@
-
 .header {
-  border-bottom: 1px solid #E7E9FC;
+  border-bottom: 1px solid #e7e9fc;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-              0px 1px 1px rgba(46, 47, 66, 0.16),
-              0px 2px 1px rgba(46, 47, 66, 0.08);
+    0px 1px 1px rgba(46, 47, 66, 0.16), 
+    0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -19,47 +18,70 @@
   line-height: 1.17;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #2E2F42;
+  color: #2e2f42;
   text-transform: uppercase;
   padding: 16px 0;
 }
 
 .header-logo span {
-  color: #4D5AE5;
+  color: #4d5ae5;
 }
 
+.mobile-menu-open-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
 
+.mobile-menu-open-icon {
+  fill: #2e2f42 !important;
+  stroke: #2e2f42 !important;
+  width: 24px;
+  height: 24px;
+}
 
-/* ==========================================================================
-   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ (ВІД 768px ДО 1157px)
-   Ховаємо мобілку, вмикаємо десктопні блоки, контакти стають стовпчиком праворуч
-   ========================================================================== */
+.menu,
+.contacts {
+  display: none;
+}
+
+.contacts-link {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: #434455;
+  text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contacts-link:hover,
+.contacts-link:focus {
+  color: #404bbf;
+}
+
 @media screen and (min-width: 768px) {
-  
-  /* 🛑 Назавжди ховаємо мобільне меню та кнопку-бургер */
-  .mobile-menu,
   .mobile-menu-open-btn {
-    display: none 
+    display: none !important;
   }
 
-  /* 🌟 Увімкнення десктопної навігації */
   .menu,
   .contacts {
     display: block;
   }
 
-  .header .container {
-    display: flex;
-    align-items: center;
-  }
-
   .header-logo {
     line-height: 1.3;
-    margin-right: 120px; /* Збільшений відступ, щоб посунути лінки ближче до центру */
-    padding: 0; /* Скидаємо мобільний падінг */
+    margin-right: 120px;
+    padding: 0;
   }
 
-  /* Навігація по центру */
   .menu-list {
     display: flex;
     align-items: center;
@@ -69,10 +91,10 @@
   .menu-link {
     display: block;
     font-weight: 500;
-    color: #2E2F42;
+    color: #2e2f42;
     padding: 24px 0;
     position: relative;
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .menu-link:after {
@@ -90,68 +112,38 @@
   .menu-link:hover,
   .menu-link:focus,
   .menu-link.active {
-    color: #404BBF;
-  }
-
-  .menu-link.active::after,
-  .menu-link:hover::after {
-    opacity: 1;
+    color: #404bbf;
   }
 
   .menu-link.active::after {
-    background-color: rgba(64, 75, 191, 1);
+    background-color: #404bbf;
   }
 
-  /* Блок контактів штовхаємо максимально праворуч */
   .contacts {
     margin-left: auto;
   }
 
-  /* 🌟 ПЛАНШЕТНИЙ ФІКС КОНТАКТІВ (стовпчик праворуч) */
   .contacts-list {
     display: flex;
-    flex-direction: column; /* Будуємо стовпчиком */
-    gap: 12px; /* Проміжок між поштою і телефоном */
-    align-items: flex-end; /* Притискаємо краї лінків до правої сторони */
-  }
-
-  .contacts-link {
-    font-weight: 400;
-    font-size: 12px; /* Акуратний планшетний розмір за ТЗ */
-    line-height: 1.17;
-    letter-spacing: 0.04em;
-    color: #434455;
-    text-decoration: none;
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .contacts-link:hover,
-  .contacts-link:focus {
-    color: #404BBF;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
   }
 }
 
-
-/* ==========================================================================
-   ТОЧКА 3: ДЕСКТОПНА ВЕРСІЯ (ВІД 1158px І ВИЩЕ)
-   Остаточний шик: розгортаємо контакти в один красивий рядок праворуч
-   ========================================================================== */
 @media screen and (min-width: 1158px) {
-  
-  /* Відступ логотипу за десктопним макетом */
   .header-logo {
     margin-right: 76px;
   }
 
-  /* 🌟 ДЕСКТОПНИЙ ФІКС КОНТАКТІВ (горизонтальний рядок) */
   .contacts-list {
-    flex-direction: row; /* Розгортаємо в рядок */
+    flex-direction: row;
     align-items: center;
-    gap: 40px; /* Великий десктопний проміжок між посиланнями */
+    gap: 40px;
   }
 
   .contacts-link {
-    font-size: 16px; /* Повертаємо великий десктопний шрифт */
+    font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
   }

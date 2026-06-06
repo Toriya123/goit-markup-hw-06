@@ -1,108 +1,146 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #fff;
-  color: #434455;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
-
-h1, h2, h3, p {
-  margin: 0;
-}
-
-ul, ol {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-  font-style: normal;
-}
-
-/* ==========================================================================
-   🌟 АДАПТИВНІ СТИЛІ СЕКЦІЙ ТА КОНТЕЙНЕРА (ВИМОГА МЕНТОРА)
-   ========================================================================== */
-
-/* 1. Базова мобільна ширина (від 320px до 767px) */
-.section {
-  padding: 96px 0; /* Менші вертикальні падінги для мобілки */
-}
-
-.container {
-  max-width: 320px; /* Обмеження ширини на телефонах */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin: 0 auto;
-  padding-left: 16px;  /* 🌟 Внутрішні однакові відступи ліворуч/праворуч */
-  padding-right: 16px; /* відповідно до макету мобільної версії */
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 999;
+  
+  /* За замовчуванням меню має бути приховане */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Коли додається клас is-open (через JS), меню красиво з'являється */
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-menu-container {
   position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 80px 24px 40px 40px;
 }
 
-/* 2. Планшетна ширина (від 768px до 1157px) */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px; /* Контейнер розширюється під планшет */
-  }
+.mobile-menu-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 3. Десктопна ширина (від 1158px і вище) */
-@media screen and (min-width: 1158px) {
-  .section {
-    padding: 120px 0; /* Повертаємо великі десктопні падінги секцій */
-  }
-
-  .container {
-    max-width: 1158px; /* Фінальна десктопна ширина контейнера */
-    padding-left: 15px;  /* Зміна падінгів під десктопний макет */
-    padding-right: 15px;
-  }
+.mobile-menu-close-btn:hover,
+.mobile-menu-close-btn:focus {
+  background-color: #404bbf;
+  border: none;
 }
 
+.mobile-menu-close-btn:hover .mobile-menu-close-icon,
+.mobile-menu-close-btn:focus .mobile-menu-close-icon {
+  fill: #ffffff;
+}
 
-.title {
+.mobile-menu-close-icon {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-nav {
+  margin-bottom: auto; /* Виштовхує контакти та соцмережі в самий низ */
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mobile-nav-link {
   font-weight: 700;
   font-size: 36px;
   line-height: 1.11;
   letter-spacing: 0.02em;
-  text-align: center;
   color: #2e2f42;
-  margin-bottom: 72px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sr-only {
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(100%);
-  margin: -1px;
+.mobile-nav-link.active,
+.mobile-nav-link:hover,
+.mobile-nav-link:focus {
+  color: #404bbf;
 }
 
-.icon {
-  fill: #F4F4FD;
+.mobile-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
 }
 
-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
+/* Стиль для телефону (перший у списку за ТЗ Завдання 3) */
+.mobile-contacts-item:first-child .mobile-contacts-link {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  color: #4d5ae5;
 }
 
-label {
-  margin: 0;
-  padding: 0;
+/* Стиль для пошти (другий у списку) */
+.mobile-contacts-item:last-child .mobile-contacts-link {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #434455;
+}
+
+.mobile-socials-list {
+  display: flex;
+  justify-content: space-between; /* Рівномірно розподіляємо за шириною за ТЗ Завдання 3 */
+  gap: 20px;
+}
+
+.mobile-socials-item {
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-socials-link {
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-socials-link:hover,
+.mobile-socials-link:focus {
+  background-color: #31d0aa;
+}
+
+.mobile-socials-icon {
+  fill: #f4f4fd;
 }

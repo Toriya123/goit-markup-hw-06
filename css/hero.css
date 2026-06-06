@@ -1,39 +1,39 @@
-/* ==========================================================================
-   ТОЧКА 1: БАЗОВІ СТИЛІ HERO (МОБІЛКА ВІД 320px) — БЕЗ МЕДІА-ЗАПИТІВ
-   ========================================================================== */
-
 .hero {
   max-width: 767px;
   margin: 0 auto;
-  padding: 72px 0; /* Мобільні компактні падінги */
-  background-color: #2E2F42;
+  padding: 72px 0;
+  background-color: #2e2f42;
   text-align: center;
-  
-  /* Звичайна картинка для екранів 1х */
-  background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-                    url(../images/hero-section/hero-bg.jpg);
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/hero-section/hero-bg.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* 🌟 ФІКС ДЛЯ БОТА: якщо екран ретіна (2х) — підвантажуємо якіснішу картинку */
-@media screen and (min-resolution: 192dpi), (min-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 192dpi),
+  (min-resolution: 2dppx),
+  (-webkit-min-device-pixel-ratio: 2) {
   .hero {
-    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-                      url(../images/hero-section/hero-bg@2x.jpg);
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url(../images/hero-section/hero-bg@2x.jpg);
   }
 }
 
 .hero-title {
   font-weight: 700;
-  font-size: 36px; /* Менший шрифт для мобілки (фото 1) */
+  font-size: 36px;
   line-height: 1.11;
   letter-spacing: 0.02em;
   color: #ffffff;
-  max-width: 216px; /* Вузька ширина, щоб текст красиво розбивався на мобілці */
+  max-width: 216px;
   margin: 0 auto 72px;
-  text-transform: capitalize;
 }
 
 .button {
@@ -44,53 +44,45 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #4D5AE5;
+  background-color: #4d5ae5;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
 .button:focus {
-  background-color: #404BBF;
+  background-color: #404bbf;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
-
-/* ==========================================================================
-   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ HERO (ВІД 768px ВГОРУ)
-   ========================================================================== */
 @media screen and (min-width: 768px) {
   .hero {
     max-width: 1157px;
-    padding: 112px 0; /* Збільшуємо падінги під планшет (фото 2) */
+    padding: 112px 0;
   }
 
   .hero-title {
-    font-size: 56px; /* Шрифт росте до великого */
+    font-size: 56px;
     line-height: 1.07;
-    max-width: 496px; /* Текст стає ширшим, як на фото 2 */
+    max-width: 496px;
     margin: 0 auto 36px;
   }
 }
 
-
-/* ==========================================================================
-   ТОЧКА 3: ДЕСКТОПНА ВЕРСІЯ HERO (ВІД 1158px ВГОРУ)
-   ========================================================================== */
 @media screen and (min-width: 1158px) {
   .hero {
     max-width: 1440px;
-    padding: 188px 0; /* Максимальні десктопні падінги з твого коду */
+    padding: 188px 0;
   }
 
   .hero-title {
-    margin: 0 auto 48px; /* Десктопний відступ до кнопки */
+    margin: 0 auto 48px;
   }
 }

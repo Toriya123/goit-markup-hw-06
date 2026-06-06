@@ -1,22 +1,16 @@
-/* ==========================================================================
-   ТОЧКА 1: БАЗОВІ СТИЛІ FOOTER (МОБІЛКА ВІД 320px) — БЕЗ МЕДІА-ЗАПИТІВ
-   ========================================================================== */
-
 .footer {
-  background-color: #2E2F42;
-  padding: 96px 0; /* Мобільні падінги */
+  background-color: #2e2f42;
+  padding: 96px 0;
 }
 
-/* На мобілці робимо головний контейнер стовпчиком по центру */
-.footer-wrapper {
+.footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center; 
-  gap: 72px; /* Вертикальний відступ між трьома блоками на мобілці */
+  text-align: center;
+  gap: 72px;
 }
 
-/* --- БЛОК 1: Логотип та текст --- */
 .footer-content {
   max-width: 264px;
   width: 100%;
@@ -24,7 +18,7 @@
 
 .footer-logo {
   display: inline-block;
-  color: #F4F4FD;
+  color: #f4f4fd;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   font-size: 18px;
@@ -36,25 +30,24 @@
 }
 
 .footer-logo span {
-  color: #4D5AE5;
+  color: #4d5ae5;
 }
 
 .footer-text {
-  color: #F4F4FD;
+  color: #f4f4fd;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  text-align: left; /* Абзац тексту вирівнюється по лівому краю */
+  text-align: left;
   margin: 0;
 }
 
-/* --- БЛОК 2: Соціальні мережі --- */
 .footer-social-text {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 16px;
   margin-top: 0;
 }
@@ -62,7 +55,7 @@
 .footer-social-list {
   display: flex;
   align-items: center;
-  justify-content: center; /* Центруємо іконки на мобілці */
+  justify-content: center;
   gap: 16px;
   list-style: none;
   padding: 0;
@@ -77,7 +70,7 @@
 .footer-social-link {
   width: 100%;
   height: 100%;
-  background-color: #4D5AE5;
+  background-color: #4d5ae5;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -87,16 +80,15 @@
 
 .footer-social-link:hover,
 .footer-social-link:focus {
-  background-color: #31D0AA;
+  background-color: #31d0aa;
 }
 
 .footer-social-link .icon {
-  fill: #F4F4FD;
+  fill: #f4f4fd;
 }
 
-/* --- БЛОК 3: Форма підписки (Subscribe) --- */
 .footer-subscribe-wrapper {
-  width: 100%; /* 🌟 ВИПРАВЛЕНО: Прибрали max-width, щоб блок займав усю ширину на мобільних */
+  width: 100%;
 }
 
 .footer-subscribe-title {
@@ -104,12 +96,11 @@
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 16px;
   margin-top: 0;
 }
 
-/* НА МОБІЛЦІ: будуємо інпут і кнопку в стовпчик */
 .footer-subscribe-form {
   display: flex;
   flex-direction: column;
@@ -122,9 +113,9 @@
 }
 
 .footer-subscribe-input {
-  width: 100%; /* 🌟 ВИПРАВЛЕНО: Інпут тепер плавно гумово розтягується на мобілці */
+  width: 100%;
   height: 40px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   background-color: transparent;
   font-size: 12px;
   line-height: 2;
@@ -132,17 +123,17 @@
   padding-left: 16px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  color: #FFFFFF;
+  color: #ffffff;
   outline: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-subscribe-input::placeholder {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .footer-subscribe-input:focus {
-  border-color: #31D0AA;
+  border-color: #31d0aa;
 }
 
 .footer-subscribe-btn {
@@ -154,9 +145,9 @@
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
-  background-color: #4D5AE5;
+  background-color: #4d5ae5;
   border: none;
   border-radius: 4px;
   min-width: 165px;
@@ -167,45 +158,30 @@
 
 .footer-subscribe-btn:hover,
 .footer-subscribe-btn:focus {
-  background-color: #31D0AA;
+  background-color: #31d0aa;
 }
 
 .footer-subscribe-icon {
   margin-left: 16px;
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 
-
-/* ==========================================================================
-   ТОЧКА 2: ПЛАНШЕТНА ВЕРСІЯ FOOTER (ВІД 768px ДО 1157px)
-   ========================================================================== */
 @media screen and (min-width: 768px) {
-  .footer {
-    padding-left: 0; /* 🌟 ВИПРАВЛЕНО: Зайвий padding-left видалено, контейнер працює сам */
-  }
-
-  .footer-wrapper {
+  .footer-container {
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     align-items: baseline;
-    text-align: left; 
-    gap: 72px 24px; /* Робочий gap за ТЗ: 72px вертикальний, 24px горизонтальний */
-  }
-
-  .footer-content {
-    margin-right: 0; /* 🌟 ВИПРАВЛЕНО: Прибрали марджин, тепер працює чистий gap: 24px */
-  }
-
-  .footer-social {
-    margin-right: 0;
+    text-align: left;
+    gap: 72px 24px;
+    padding-left: 108px;
   }
 
   .footer-social-list {
-    justify-content: flex-start; 
+    justify-content: flex-start;
   }
 
   .footer-subscribe-wrapper {
-    max-width: 453px; 
+    width: auto;
   }
 
   .footer-subscribe-form {
@@ -214,33 +190,26 @@
   }
 
   .footer-subscribe-input {
-    width: 264px; /* Фіксована ширина інпута на планшеті та десктопі */
+    width: 264px;
   }
 }
 
-
-/* ==========================================================================
-   ТОЧКА 3: ДЕСКТОПНА ВЕРСІЯ FOOTER (ВІД 1158px І ВИЩЕ)
-   ========================================================================== */
 @media screen and (min-width: 1158px) {
   .footer {
     padding: 100px 0;
   }
 
-  .footer-wrapper {
-    flex-wrap: nowrap; /* Все в одну лінію */
-    gap: 0; /* 🌟 ВИПРАВЛЕНО: Повністю обнуляємо gap для десктопа, керуємо марджинами */
+  .footer-container {
+    flex-wrap: nowrap;
+    gap: 0;
+    padding-left: 15px;
   }
 
   .footer-content {
-    margin-right: 120px; /* Відступ між 1-м і 2-м блоком чітко 120px */
+    margin-right: 120px;
   }
 
   .footer-social {
-    margin-right: 80px; /* 🌟 ВИПРАВЛЕНО: Чистий марджин 80px без впливу сторонніх gap */
-  }
-
-  .footer-subscribe-wrapper {
-    margin-left: auto; /* Форма підписки притискається до правого краю */
+    margin-right: 80px;
   }
 }
